@@ -27,11 +27,6 @@
 
 *{box-sizing:border-box;}
 
-/* FIX: pinta a faixa de overflow horizontal no mobile com a cor do topbar */
-html{
-  background:var(--nav-bg);
-}
-
 body{
   margin:0;
   background:var(--bg);
@@ -44,7 +39,7 @@ h1,h2{font-family:'Poppins',sans-serif;}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
 /* NAV */
-.topbar{position:sticky;top:0;z-index:50;background:var(--nav-bg);box-shadow:0 2px 10px rgba(0,0,0,0.15);transition:background .35s ease;width:100%;}
+.topbar{position:sticky;top:0;z-index:50;background:var(--nav-bg);box-shadow:0 2px 10px rgba(0,0,0,0.15);transition:background .35s ease;}
 .topbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
 .wordmark{display:flex;align-items:center;gap:8px;color:#F4F6F8;font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:.02em;font-size:1.05rem;}
 .wordmark .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);}
