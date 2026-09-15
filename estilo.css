@@ -261,24 +261,26 @@ footer{max-width:1100px;margin:60px auto 0;padding:20px 24px 0;border-top:1px so
   align-items:center;
   gap:16px;
   flex:0 1 240px;
-  background:var(--nav-bg-soft);
-  border:1px solid rgba(255,255,255,0.08);
+  background:var(--surface);
+  border:1px solid var(--border);
   border-radius:12px;
   padding:10px 24px 10px 10px;
   text-align:left;
-  transition:transform .2s ease, background .2s ease;
+  box-shadow:var(--shadow);
+  transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
 .participante-card:hover{
   transform:translateX(4px);
-  background:#243B4A;
+  background:var(--accent-soft);
+  box-shadow:0 10px 28px rgba(22,34,44,0.14);
 }
 .participante-foto{
-  width:88px;
-  height:88px;
-  border-radius:10px;
+  width:112px;
+  height:112px;
+  border-radius:12px;
   overflow:hidden;
   flex-shrink:0;
-  background:#0f1c26;
+  background:var(--bg);
 }
 .participante-foto img{
   width:100%;
@@ -290,14 +292,14 @@ footer{max-width:1100px;margin:60px auto 0;padding:20px 24px 0;border-top:1px so
   font-family:'Inter',sans-serif;
   font-size:1rem;
   font-weight:600;
-  color:#F4F6F8;
+  color:var(--ink);
   margin:0;
 }
 .participante-funcao{
   font-family:'Inter',sans-serif;
   font-size:.8rem;
   font-weight:500;
-  color:#93A3B0;
+  color:var(--ink-soft);
   margin:4px 0 0;
 }
 
@@ -307,4 +309,21 @@ footer{max-width:1100px;margin:60px auto 0;padding:20px 24px 0;border-top:1px so
   justify-content:flex-start;
   padding-top:12vh;
   padding-left:8px;
+}
+
+/* Participantes em telas menores: cards ocupam a largura toda e a foto cresce um pouco mais */
+@media (max-width:640px){
+  .participantes-lista{
+    gap:16px;
+  }
+  .participante-card{
+    flex:1 1 100%;
+    max-width:420px;
+    padding:12px 20px 12px 12px;
+    gap:18px;
+  }
+  .participante-foto{
+    width:120px;
+    height:120px;
+  }
 }
