@@ -53,6 +53,58 @@
 </section>
 
 <section class="section-wrap">
+  <p class="section-label animar" data-i18n="sobre.exploded.label">Explore a caneta em detalhes</p>
+  <p class="compare-intro animar" data-i18n="sobre.exploded.intro">Passe o mouse sobre a caneta para vê-la se desmontar e conheça cada peça que a compõe.</p>
+  <div class="exploded-wrap animar">
+    <div class="exploded-caneta" id="explodedCaneta">
+      <span class="exploded-hint" data-i18n="sobre.exploded.hint">Passe o mouse aqui</span>
+
+      <!-- Corpo/carcaça da caneta: fica ao fundo, praticamente no centro -->
+      <div class="exploded-part exploded-part--base"
+           style="--h:clamp(220px,46vw,300px); --ax:0px; --ay:0px; --ex:0px; --ey:0px; --rot:0deg;"
+           data-i18n-attr="data-nome:sobre.componentes.carcaca.title" data-nome="Carcaça">
+        <img src="peca-carcaca.png" alt="Carcaça da caneta">
+      </div>
+
+      <!-- Arduino Nano: fica encaixado dentro da caixa, no topo da caneta -->
+      <div class="exploded-part"
+           style="--h:clamp(64px,13vw,92px); --ax:-16px; --ay:-116px; --ex:-150px; --ey:-130px; --rot:-12deg;"
+           data-i18n-attr="data-nome:sobre.componentes.arduino.title" data-nome="Arduino Nano">
+        <img src="peca-arduino.png" alt="Arduino Nano">
+      </div>
+
+      <!-- LED modular: representado pelo fio com a ponta acesa, que vai da caixa até a ponta da caneta -->
+      <div class="exploded-part"
+           style="--h:clamp(84px,17vw,120px); --ax:2px; --ay:-150px; --ex:0px; --ey:-190px; --rot:0deg;"
+           data-i18n-attr="data-nome:sobre.componentes.led.title" data-nome="LED modular">
+        <img src="peca-led.png" alt="LED modular">
+      </div>
+
+      <!-- MPU6050 -->
+      <div class="exploded-part"
+           style="--h:clamp(44px,9vw,62px); --ax:22px; --ay:-96px; --ex:150px; --ey:-120px; --rot:10deg;"
+           data-i18n-attr="data-nome:sobre.componentes.mpu.title" data-nome="MPU6050">
+        <img src="peca-mpu.png" alt="MPU6050">
+      </div>
+
+      <!-- Fios (jumpers coloridos) -->
+      <div class="exploded-part"
+           style="--h:clamp(78px,16vw,110px); --ax:-30px; --ay:-78px; --ex:-160px; --ey:100px; --rot:-8deg;"
+           data-i18n-attr="data-nome:sobre.componentes.fios.title" data-nome="Fios">
+        <img src="peca-fios.png" alt="Fios">
+      </div>
+
+      <!-- Cabo USB: sai pela lateral da caixa, como na caneta real -->
+      <div class="exploded-part"
+           style="--h:clamp(70px,15vw,100px); --ax:-40px; --ay:-132px; --ex:-170px; --ey:0px; --rot:-14deg;"
+           data-i18n-attr="data-nome:sobre.componentes.cabo.title" data-nome="Cabo USB">
+        <img src="peca-cabo-usb.png" alt="Cabo USB">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap">
   <p class="section-label" data-i18n="sobre.componentes.label">Componentes do SPV</p>
   <p class="compare-intro" data-i18n="sobre.componentes.intro">Conheça as peças que compõem o Sistema de Posicionamento Visual (SPV) utilizado na caneta.</p>
 
@@ -112,6 +164,20 @@
 </section>
 
 <footer>Caneta 3D — Sistema de Posicionamento Visual (SPV)</footer>
+
+<!-- ===================== WIDGET VLIBRAS (tradutor de Português para Libras) =====================
+     Ícone flutuante que traduz o conteúdo da página para Língua Brasileira de Sinais.
+     Serviço público oficial: https://www.gov.br/governodigital/pt-br/vlibras ============ -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
 
 <script src="Idioma.JS"></script>
 <script src="script.js"></script>
