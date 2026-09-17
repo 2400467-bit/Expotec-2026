@@ -17,6 +17,49 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="estilo.css">
+
+<!-- ===================== ESTILO DA SEÇÃO "VÍDEO DO PROTÓTIPO" ===================== -->
+<style>
+  .video-wrap{
+    max-width: 860px;
+    margin: 0 auto 56px;
+  }
+  .video-frame{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #0f1b1e;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    border: 1px solid rgba(63,125,137,.25);
+  }
+  .video-frame video{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: #0f1b1e;
+  }
+  /* Aviso visível apenas enquanto não houver vídeo (some sozinho quando o <video> tiver uma fonte válida) */
+  .video-placeholder-msg{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    color: #cfe3e6;
+    font-family: 'Inter', sans-serif;
+    font-size: .95rem;
+    background: linear-gradient(160deg, #143036, #0f1b1e);
+    pointer-events: none;
+  }
+  html[data-theme="dark"] .video-frame{
+    border-color: rgba(63,125,137,.4);
+  }
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -55,6 +98,41 @@
 </section>
 
 <div class="section-wrap">
+  <p class="section-label animar" data-i18n="index.video.label">Protótipo em vídeo</p>
+  <div class="video-wrap animar">
+    <div class="video-frame">
+
+      <!-- ============================================================
+           👉 COLOQUE O VÍDEO AQUI 👈
+           1) Coloque o arquivo de vídeo na mesma pasta deste index.html
+              (ex: video-caneta.mp4)
+           2) Troque "video-caneta.mp4" abaixo pelo nome exato do arquivo
+           3) (Opcional) Coloque uma imagem de capa e troque
+              "video-capa.jpg" pelo nome dela no atributo poster
+      ============================================================ -->
+      <video controls preload="metadata" poster="video-capa.jpg">
+        <source src="video-caneta.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução deste vídeo.
+      </video>
+
+      <!-- Mensagem exibida apenas enquanto o vídeo acima não existir/carregar.
+           Pode remover esta div quando o vídeo estiver no ar. -->
+      <div class="video-placeholder-msg" id="videoPlaceholderMsg">
+        Vídeo em breve — assim que o arquivo "video-caneta.mp4" for adicionado à pasta do site, ele aparecerá aqui automaticamente.
+      </div>
+    </div>
+  </div>
+  <script>
+    // Esconde o aviso de placeholder automaticamente assim que o vídeo carregar de verdade
+    (function(){
+      var v = document.currentScript.parentElement.querySelector('video');
+      var msg = document.getElementById('videoPlaceholderMsg');
+      if(!v || !msg) return;
+      v.addEventListener('loadeddata', function(){ msg.style.display = 'none'; });
+      v.addEventListener('error', function(){ msg.style.display = 'flex'; }, true);
+    })();
+  </script>
+
   <p class="section-label animar" data-i18n="index.imagem.label">Protótipo em Imagem</p>
   <p class="compare-intro animar" data-i18n="index.compare.intro">Arraste a barra para comparar o projeto desmontado com a caneta em uso.</p>
   <div class="compare-wrap animar">
@@ -82,17 +160,36 @@
   <div class="grid-cards">
     <div class="etapas animar">
       <h2 data-i18n="project.card1.title">O que é o projeto?</h2>
-      <p data-i18n="project.card1.text">O SPV 1.0 (Smart Pen Vision 1.0) é um projeto experimental voltado à fisioterapia e reabilitação motora.
-        Ele utiliza componentes de baixo custo e código aberto, como Arduino Nano e sensores, para acompanhar movimentos realizados com uma caneta inteligente.
-        A proposta utiliza o conceito de air writing, permitindo que o usuário faça movimentos livres no ar, como se estivesse escrevendo ou desenhando.
-        Esses movimentos podem ser utilizados em exercícios repetitivos para estimular a coordenação motora, amplitude e controle dos membros superiores.
-        O sistema pode registrar e analisar a trajetória dos movimentos, oferecendo exercícios guiados, repetições e feedback.
-        O objetivo é criar uma ferramenta acessível e interativa que auxilie a reabilitação, sem substituir o acompanhamento de um fisioterapeuta.
-        Futuramente, o SPV poderá utilizar visão computacional e sensores mais avançados para aumentar a precisão das análises.</p>
+      <p data-i18n="project.card1.text">O SPV 1.0 (Smart Pen Vision 1.0) é uma caneta inteligente de baixo custo, construída com Arduino Nano e sensores. Ela usa o conceito de air writing, captando movimentos livres feitos no ar para estimular a coordenação motora. O sistema registra a trajetória dos gestos e oferece exercícios guiados e feedback, sempre como apoio — nunca em substituição — ao acompanhamento profissional.</p>
     </div>
     <div class="etapas animar">
       <h2 data-i18n="project.card2.title">Benefícios do projeto</h2>
-      <p data-i18n="project.card2.text">Através da smart pen é possível ajudar indivíduos em sua fisioterapia. Com ela, o paciente poderá realizar desenhos de formas geométricas a mando do profissional a fim de analisar sua condição física. Assim será possível ler velocidade, pressão, direção, precisão e outros. Será possível transformar a análise em brincadeiras e jogos, permitindo o engajamento do paciente e diminuindo seu estresse em longos períodos. Poderá ser obtido dados precisos da condição do indivíduo e ajudar na recuperação progressiva do movimento corporal.</p>
+      <p data-i18n="project.card2.text">A smart pen permite que o paciente desenhe formas geométricas indicadas por um profissional, medindo velocidade, pressão, direção e precisão dos movimentos. A análise pode virar jogos, tornando a experiência mais leve e reduzindo o estresse em sessões longas, além de gerar dados precisos para acompanhar a evolução da recuperação motora.</p>
+    </div>
+    <div class="etapas animar">
+      <h2 data-i18n="project.card3.title">Função do projeto</h2>
+      <p data-i18n="project.card3.text">Além da fisioterapia, o SPV pode apoiar a educação infantil, tornando o aprendizado de traços, formas e letras mais lúdico. Também auxilia na reabilitação motora de pessoas com deficiência ou em situações semelhantes, estimulando de forma acessível a coordenação e o controle dos movimentos.</p>
+    </div>
+  </div>
+
+  <p class="section-label animar" data-i18n="project.extra.label">Registros adicionais do projeto</p>
+  <div class="projeto-imagens animar">
+    <div class="image-frame">
+      <!-- ============================================================
+           👉 COLOQUE A PRIMEIRA IMAGEM EXTRA DO PROJETO AQUI 👈
+           1) Salve o arquivo na mesma pasta deste index.html
+           2) Troque "projeto-extra-1.jpg" abaixo pelo nome exato do arquivo
+      ============================================================ -->
+      <img src="Criança.jpg" alt="Imagem adicional do projeto" onerror="this.style.display='none'">
+      <span data-i18n="image.placeholder">Imagem do projeto</span>
+    </div>
+    <div class="image-frame">
+      <!-- ============================================================
+           👉 COLOQUE A SEGUNDA IMAGEM EXTRA DO PROJETO AQUI 👈
+           Troque "projeto-extra-2.jpg" abaixo pelo nome exato do arquivo
+      ============================================================ -->
+      <img src="Senhora.jpg" alt="Imagem adicional do projeto" onerror="this.style.display='none'">
+      <span data-i18n="image.placeholder">Imagem do projeto</span>
     </div>
   </div>
 
@@ -114,6 +211,20 @@
 
   <footer data-i18n="footer.text">Caneta 3D — Expotec 2026</footer>
 </div>
+
+<!-- ===================== WIDGET VLIBRAS (tradutor de Português para Libras) =====================
+     Ícone flutuante que traduz o conteúdo da página para Língua Brasileira de Sinais.
+     Serviço público oficial: https://www.gov.br/governodigital/pt-br/vlibras ============ -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
 
 <script src="Idioma.JS"></script>
 <script src="script.js"></script>
